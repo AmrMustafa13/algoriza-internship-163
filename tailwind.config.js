@@ -2,7 +2,15 @@
 export default {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        worksans: ["Work Sans", "sans-serif"],
+      },
+    },
+    container: {
+      center: true,
+      padding: "2rem",
+    },
   },
   plugins: [],
 };
