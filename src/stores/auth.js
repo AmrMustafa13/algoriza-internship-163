@@ -6,7 +6,7 @@ export const useAuthStore = defineStore("auth", () => {
 
   const isLoggedIn = computed(() => localStorage.getItem("user") !== null);
 
-  const setUser = (userData) => {
+  const login = (userData) => {
     user.value = userData;
     localStorage.setItem("user", JSON.stringify(userData));
   };
@@ -19,7 +19,7 @@ export const useAuthStore = defineStore("auth", () => {
   return {
     user,
     isLoggedIn,
-    setUser,
+    login,
     logout,
   };
 });
