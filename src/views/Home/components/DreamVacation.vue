@@ -10,7 +10,7 @@
     <ul class="py-8 grid grid-cols-4 list-none gap-5">
       <li class="flex flex-col gap-4">
         <img
-          src="../../../assets/images/dream-vacation/Australia.jpeg"
+          src="../../../assets/images/dream-vacation/Australia.webp"
           alt="Australia"
           class="rounded-lg h-56 object-cover"
         />
@@ -21,7 +21,7 @@
       </li>
       <li class="flex flex-col gap-4">
         <img
-          src="../../../assets/images/dream-vacation/Japan.jpeg"
+          src="../../../assets/images/dream-vacation/Japan.webp"
           alt="Japan"
           class="rounded-lg h-56 object-cover"
         />
@@ -32,7 +32,7 @@
       </li>
       <li class="flex flex-col gap-4">
         <img
-          src="../../../assets/images/dream-vacation/New-Zealand.jpeg"
+          src="../../../assets/images/dream-vacation/New-Zealand.webp"
           alt="New Zealand"
           class="rounded-lg h-56 object-cover"
         />
@@ -43,7 +43,7 @@
       </li>
       <li class="flex flex-col gap-4">
         <img
-          src="../../../assets/images/dream-vacation/Greece.jpeg"
+          src="../../../assets/images/dream-vacation/Greece.webp"
           alt="Greece"
           class="rounded-lg h-56 object-cover"
         />
