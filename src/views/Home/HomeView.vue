@@ -4,6 +4,7 @@
     <Header />
     <CovidStatus />
     <DreamVacation />
+    <Inspiration />
   </div>
 </template>
 
@@ -12,4 +13,5 @@ import Navbar from "../../components/Navbar.vue";
 import Header from "./components/Header.vue";
 import CovidStatus from "../../components/CovidStatus.vue";
 import DreamVacation from "./components/DreamVacation.vue";
+import Inspiration from "./components/Inspiration.vue";
 </script>

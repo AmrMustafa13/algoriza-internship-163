@@ -13,7 +13,7 @@
           class="rounded-lg h-56 object-cover"
         />
         <div>
-          <h3>Australia</h3>
+          <h3 class="text-lg font-semibold">Australia</h3>
           <span class="text-sm">2246 properties</span>
         </div>
       </li>
@@ -24,7 +24,7 @@
           class="rounded-lg h-56 object-cover"
         />
         <div>
-          <h3>Australia</h3>
+          <h3 class="text-lg font-semibold">Japan</h3>
           <span class="text-sm">1278 properties</span>
         </div>
       </li>
@@ -35,7 +35,7 @@
           class="rounded-lg h-56 object-cover"
         />
         <div>
-          <h3>New Zealand</h3>
+          <h3 class="text-lg font-semibold">New Zealand</h3>
           <span class="text-sm">480 properties</span>
         </div>
       </li>
@@ -46,7 +46,7 @@
           class="rounded-lg h-56 object-cover"
         />
         <div>
-          <h3>Greece</h3>
+          <h3 class="text-lg font-semibold">Greece</h3>
           <span class="text-sm">320 properties</span>
         </div>
       </li>
