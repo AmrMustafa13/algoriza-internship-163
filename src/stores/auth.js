@@ -8,7 +8,7 @@ export const useAuthStore = defineStore("auth", () => {
   const router = useRouter();
 
   const user = ref({});
-  const isLoggedIn = ref(false);
+  const isLoggedIn = ref(localStorage.getItem("user") !== null);
 
   const register = async (userData) => {
     const response = await fetch("http://localhost:8000/users", {
