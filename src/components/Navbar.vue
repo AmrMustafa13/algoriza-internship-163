@@ -1,5 +1,5 @@
 <template>
-  <nav class="container flex justify-between items-center py-4">
+  <nav class="flex justify-between items-center py-4">
     <div class="flex items-center gap-1 font-[500] text-lg">
       <img src="../assets/images/logo.png" alt="logo" />
       <router-link to="/">My Dream Place</router-link>
