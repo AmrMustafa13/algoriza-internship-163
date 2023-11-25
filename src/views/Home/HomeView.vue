@@ -6,6 +6,7 @@
     <DreamVacation />
     <Inspiration />
     <PopularHotels />
+    <DownloadApp />
   </div>
 </template>
 
@@ -16,4 +17,5 @@ import CovidStatus from "../../components/CovidStatus.vue";
 import DreamVacation from "./components/DreamVacation.vue";
 import Inspiration from "./components/Inspiration.vue";
 import PopularHotels from "./components/PopularHotels.vue";
+import DownloadApp from "./components/DownloadApp.vue";
 </script>
