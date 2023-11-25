@@ -2,6 +2,7 @@
   <div class="container">
     <Navbar />
     <Header />
+    <SearchBar />
     <CovidStatus />
     <DreamVacation />
     <Inspiration />
@@ -18,6 +19,7 @@
 <script setup>
 import Navbar from "../../components/Navbar.vue";
 import Header from "./components/Header.vue";
+import SearchBar from "./components/SearchBar.vue";
 import CovidStatus from "../../components/CovidStatus.vue";
 import DreamVacation from "./components/DreamVacation.vue";
 import Inspiration from "./components/Inspiration.vue";
