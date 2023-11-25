@@ -1,6 +1,8 @@
 <template>
   <div class="text-[#181818] flex flex-col gap-4">
-    <h2 class="font-semibold text-2xl">Enjoy your dream vacation</h2>
+    <h2 class="font-semibold text-2xl text-[#181818]">
+      Enjoy your dream vacation
+    </h2>
     <p class="text-[#333]">
       Plan and book our perfect trip with expert advice, travel tips,
       destination information and inspiration from us
