@@ -8,24 +8,31 @@
       <li>
         <router-link to="/">Home</router-link>
       </li>
-      <li>
-        <router-link to="/discover">Discover</router-link>
-      </li>
-      <li>
-        <router-link to="/activities">Activities</router-link>
-      </li>
-      <li>
-        <router-link to="/about">About</router-link>
-      </li>
-      <li>
-        <router-link to="/contact">Contact</router-link>
-      </li>
+      <li>Discover</li>
+      <li>Activities</li>
+      <li>About</li>
+      <li>Contact</li>
     </ul>
-    <div class="flex justify-between items-center gap-2">
+    <div
+      class="flex justify-between items-center gap-2"
+      v-if="authStore.isLoggedIn"
+    >
       <img src="../assets/images/notification.png" alt="notification" />
       <img src="../assets/images/profile.png" alt="profile" />
     </div>
+    <button v-if="!authStore.isLoggedIn">
+      <router-link
+        to="/login"
+        class="font-[500] bg-[#2F80ED] text-white rounded-md py-3 px-5"
+      >
+        Sign In
+      </router-link>
+    </button>
   </nav>
 </template>
 
-<script setup></script>
+<script setup>
+import { useAuthStore } from "../stores/auth";
+
+const authStore = useAuthStore();
+</script>

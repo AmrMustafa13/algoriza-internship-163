@@ -10,9 +10,6 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
-      meta: {
-        requiresAuth: true,
-      },
     },
     {
       path: "/register",
@@ -48,6 +45,8 @@ router.beforeEach((to, from, next) => {
     } else {
       next();
     }
+  } else {
+    next();
   }
 });
 

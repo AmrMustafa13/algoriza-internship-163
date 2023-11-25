@@ -49,9 +49,9 @@
 <script setup>
 import { ref } from "vue";
 import { useToast } from "vue-toastification";
-import { useRouter } from "vue-router";
+import { useAuthStore } from "../stores/auth";
 
-const router = useRouter();
+const authStore = useAuthStore();
 
 const email = ref("");
 const password = ref("");
@@ -65,8 +65,6 @@ const handleSubmit = () => {
     toast.error("Please fill in all fields");
     return;
   }
-
-  const url = "http://localhost:8000/users";
 
   // check if email is valid
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -98,29 +96,6 @@ const handleSubmit = () => {
     password: password.value,
   };
 
-  // post request to register user db.json server
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(user),
-  };
-
-  fetch(url, options)
-    .then((res) => res.json())
-    .then((data) => {
-      toast.success("User registered successfully");
-      email.value = "";
-      password.value = "";
-      confirmPassword.value = "";
-    })
-    .catch((err) => {
-      console.log(err);
-      toast.error("Something went wrong");
-    });
-
-  // redirect to login page
-  router.push("/login");
+  authStore.register(user);
 };
 </script>

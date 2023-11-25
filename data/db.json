@@ -4,6 +4,36 @@
       "email": "test@test.com",
       "password": "ABCabc123",
       "id": 1
+    },
+    {
+      "email": "amrmostafa1311@gmail.com",
+      "password": "ABCabc123",
+      "id": 2
+    },
+    {
+      "email": "amrmostafa1311@gmail.com",
+      "password": "ABCabc123",
+      "id": 3
+    },
+    {
+      "email": "amrmostafa1311@gmail.com",
+      "password": "ABCabc123",
+      "id": 4
+    },
+    {
+      "email": "test@test.com",
+      "password": "ABCabc123",
+      "id": 5
+    },
+    {
+      "email": "amrmostafa1311@gmail.com",
+      "password": "ABCabc123",
+      "id": 6
+    },
+    {
+      "email": "test@test.com",
+      "password": "ABCabc123",
+      "id": 7
     }
   ]
 }

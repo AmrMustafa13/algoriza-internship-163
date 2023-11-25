@@ -60,21 +60,11 @@ const handleSubmit = () => {
     return;
   }
 
-  const url = "http://localhost:8000/users";
+  const user = {
+    email: email.value,
+    password: password.value,
+  };
 
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      const user = data.find(
-        (user) => user.email === email.value && user.password === password.value
-      );
-
-      if (user) {
-        authStore.login(user);
-        router.push("/");
-      } else {
-        toast.error("Invalid email or password");
-      }
-    });
+  authStore.login(user);
 };
 </script>
