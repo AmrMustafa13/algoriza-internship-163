@@ -52,16 +52,7 @@
     </select>
     <button>
       <router-link
-        :to="{
-          name: 'search',
-          query: {
-            destination,
-            checkIn,
-            checkOut,
-            guests,
-            rooms,
-          },
-        }"
+        to="/search"
         class="font-[500] bg-[#2F80ED] text-white rounded-md py-2 px-5"
       >
         Search

@@ -7,7 +7,7 @@ export const useAuthStore = defineStore("auth", () => {
   const toast = useToast();
   const router = useRouter();
 
-  const user = ref({});
+  const user = ref(JSON.parse(localStorage.getItem("user")) || {});
   const isLoggedIn = ref(localStorage.getItem("user") !== null);
 
   const register = async (userData) => {

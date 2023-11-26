@@ -20,9 +20,6 @@ import SearchBar from "../../components/SearchBar.vue";
 import CovidStatus from "../../components/CovidStatus.vue";
 import Footer from "../../components/Footer.vue";
 import CopyRights from "../../components/CopyRights.vue";
-import { useRoute } from "vue-router";
-
-const route = useRoute();
 </script>
 
 <style lang="scss" scoped></style>

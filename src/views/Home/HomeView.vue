@@ -1,3 +1,5 @@
+import WelcomeModal from '../../components/WelcomeModal.vue';
+
 <template>
   <div class="container">
     <Navbar />
@@ -12,6 +14,9 @@
     <Footer />
   </div>
   <CopyRights />
+  <Teleport to="#welcome-modal">
+    <WelcomeModal />
+  </Teleport>
 </template>
 
 <script setup>
@@ -26,4 +31,5 @@ import DownloadApp from "./components/DownloadApp.vue";
 import Explore from "./components/Explore.vue";
 import Footer from "../../components/Footer.vue";
 import CopyRights from "../../components/CopyRights.vue";
+import WelcomeModal from "../../components/WelcomeModal.vue";
 </script>
