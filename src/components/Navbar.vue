@@ -18,7 +18,47 @@
       v-if="authStore.isLoggedIn"
     >
       <img src="../assets/images/notification.png" alt="notification" />
-      <img src="../assets/images/profile.png" alt="profile" />
+      <div class="relative">
+        <img
+          src="../assets/images/profile.png"
+          alt="profile"
+          @click="dropDownOpen = !dropDownOpen"
+          class="cursor-pointer"
+        />
+        <ul
+          v-if="dropDownOpen"
+          class="text-[#4F4F4F] rounded-lg bg-white absolute right-0 top-full flex flex-col gap-2 min-w-max"
+        >
+          <li
+            class="flex items-center gap-2 border-b-2 pb-2 px-2 border-[#4f4f4f]/20"
+          >
+            <img src="../assets/images/user-dropdown/manage.svg" alt="manage" />
+            <span>Manage Account</span>
+          </li>
+          <li
+            class="flex items-center gap-2 border-b-2 pb-2 px-2 border-[#4f4f4f]/20"
+          >
+            <img
+              src="../assets/images/user-dropdown/my-trips.svg"
+              alt="my-trips"
+            />
+            <span>My Trips</span>
+          </li>
+          <li
+            class="flex items-center gap-2 border-b-2 pb-2 px-2 border-[#4f4f4f]/20"
+          >
+            <img src="../assets/images/user-dropdown/wallet.svg" alt="wallet" />
+            <span>Reward and Wallet</span>
+          </li>
+          <li
+            class="flex items-center gap-2 border-b-2 pb-2 px-2 cursor-pointer border-[#4f4f4f]/20"
+            @click="authStore.logout"
+          >
+            <img src="../assets/images/user-dropdown/logout.svg" alt="logout" />
+            <span>Sign Out</span>
+          </li>
+        </ul>
+      </div>
     </div>
     <button v-if="!authStore.isLoggedIn">
       <router-link
@@ -33,6 +73,9 @@
 
 <script setup>
 import { useAuthStore } from "../stores/auth";
+import { ref } from "vue";
+
+const dropDownOpen = ref(false);
 
 const authStore = useAuthStore();
 </script>
