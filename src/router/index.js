@@ -4,6 +4,8 @@ import RegisterView from "../views/RegisterView.vue";
 import LoginView from "../views/LoginView.vue";
 import SearchView from "../views/Search/SearchView.vue";
 import CheckoutView from "../views/Checkout/CheckoutView.vue";
+import HotelDetails from "../views/HotelDetails/HotelDetails.vue";
+import MyTripsView from "../views/MyTripsView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,6 +43,22 @@ const router = createRouter({
       path: "/checkout",
       name: "checkout",
       component: CheckoutView,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/hotel/:id",
+      name: "hotel",
+      component: HotelDetails,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/my-trips",
+      name: "my-trips",
+      component: MyTripsView,
       meta: {
         requiresAuth: true,
       },
