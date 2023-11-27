@@ -5,8 +5,8 @@
     >
       <p class="text-lg">Important information about your booking</p>
     </header>
-    <div class="px-8 py-10 flex flex-col gap-8">
-      <ol>
+    <div class="px-5 py-10 flex flex-col gap-8">
+      <ol class="text-[15px]">
         <li>
           1. This rate is non-refundable. If you change or cancel your booking
           you will not get a refund or credit to use for a future stay.

@@ -10,6 +10,44 @@
       <p class="text-lg">Payment Options</p>
     </header>
     <form class="px-8 py-10 flex flex-col gap-4">
+      <div class="flex gap-2">
+        <div
+          class="p-2 rounded-md bg-[#F2F2F2] flex items-center justify-center w-[60px] h-[40px]"
+        >
+          <img
+            class="w-full object-contain h-full"
+            src="../../../assets/images/checkout/credit.png"
+            alt="credit"
+          />
+        </div>
+        <div
+          class="p-2 rounded-md bg-[#F2F2F2] flex items-center justify-center w-[60px] h-[40px]"
+        >
+          <img
+            class="w-full object-contain h-full"
+            src="../../../assets/images/checkout/visa.png"
+            alt="visa"
+          />
+        </div>
+        <div
+          class="p-2 rounded-md bg-[#F2F2F2] flex items-center justify-center w-[60px] h-[40px]"
+        >
+          <img
+            class="w-full object-contain h-full"
+            src="../../../assets/images/checkout/express.png"
+            alt="express"
+          />
+        </div>
+        <div
+          class="p-2 rounded-md bg-[#F2F2F2] flex items-center justify-center w-[60px] h-[40px]"
+        >
+          <img
+            class="w-full object-contain h-full"
+            src="../../../assets/images/checkout/discover.png"
+            alt="discover"
+          />
+        </div>
+      </div>
       <div class="text-[rgb(24,24,24)] w-[80%]">
         <div class="flex flex-col gap-2">
           <label for="nameoncard">Name on Card</label>

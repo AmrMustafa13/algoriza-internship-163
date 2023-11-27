@@ -10,7 +10,7 @@
         Secure your reservation
       </h1>
       <CovidStatus />
-      <div class="flex justify-between gap-8">
+      <div class="flex justify-between gap-8 pb-32">
         <div class="flex-[2] flex flex-col gap-8">
           <UserDataForm />
           <PaymentOptionsForm />

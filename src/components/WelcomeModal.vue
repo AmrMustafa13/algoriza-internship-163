@@ -1,5 +1,9 @@
 <template>
-  <div class="bg-black fixed inset-0 bg-opacity-30" v-if="open">
+  <div
+    class="bg-black fixed inset-0 bg-opacity-30"
+    v-if="open"
+    @click.self="open = false"
+  >
     <div
       class="bg-white rounded-lg text-[#181818] w-96 flex flex-col text-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-6 gap-8"
     >

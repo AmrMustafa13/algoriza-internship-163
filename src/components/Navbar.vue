@@ -35,14 +35,14 @@
             <img src="../assets/images/user-dropdown/manage.svg" alt="manage" />
             <span>Manage Account</span>
           </li>
-          <li
-            class="flex items-center gap-2 border-b-2 pb-2 px-2 border-[#4f4f4f]/20"
-          >
-            <img
-              src="../assets/images/user-dropdown/my-trips.svg"
-              alt="my-trips"
-            />
-            <span>My Trips</span>
+          <li class="border-b-2 pb-2 px-2 border-[#4f4f4f]/20">
+            <router-link to="/my-trips" class="flex items-center gap-2">
+              <img
+                src="../assets/images/user-dropdown/my-trips.svg"
+                alt="my-trips"
+              />
+              <span>My Trips</span>
+            </router-link>
           </li>
           <li
             class="flex items-center gap-2 border-b-2 pb-2 px-2 border-[#4f4f4f]/20"

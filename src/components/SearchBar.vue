@@ -6,32 +6,42 @@
       class="border border-gray-300 rounded-md px-4 py-2 w-full"
       v-model="destination"
       @change="changeSearchQuery"
+      name="destination"
     >
       <option value="0" disabled>Where are you going?</option>
       <option
-        v-for="destination in allDestinations"
+        v-for="destination in destinationOptions"
         :key="destination.dest_id"
         :value="destination.dest_id"
       >
         {{ destination.name }}
       </option>
     </select>
-    <VueDatePicker
-      v-model="checkIn"
+    <input
+      type="text"
+      name="checkIn"
       placeholder="Check in date"
-      :enable-time-picker="false"
-      @update:model-value="changeSearchQuery"
-    ></VueDatePicker>
-    <VueDatePicker
-      v-model="checkOut"
+      onfocus="(this.type='date')"
+      onblur="(this.type='text')"
+      class="border border-gray-300 rounded-md px-4 py-2 w-full"
+      v-model="checkIn"
+      @change="changeSearchQuery"
+    />
+    <input
+      type="text"
+      name="checkOut"
       placeholder="Check out date"
-      :enable-time-picker="false"
-      @update:model-value="changeSearchQuery"
-    ></VueDatePicker>
+      onfocus="(this.type='date')"
+      onblur="(this.type='text')"
+      class="border border-gray-300 rounded-md px-4 py-2 w-full"
+      v-model="checkOut"
+      @change="changeSearchQuery"
+    />
     <select
       class="border border-gray-300 rounded-md px-4 py-2 w-full"
       v-model="guests"
       @change="changeSearchQuery"
+      name="guests"
     >
       <option value="0" disabled>Guests</option>
       <option value="1">1</option>
@@ -43,6 +53,7 @@
       class="border border-gray-300 rounded-md px-4 py-2 w-full"
       v-model="rooms"
       @change="changeSearchQuery"
+      name="rooms"
     >
       <option value="0" disabled>Rooms</option>
       <option value="1">1</option>
@@ -50,27 +61,26 @@
       <option value="3">3</option>
       <option value="4">4</option>
     </select>
-    <button>
-      <router-link
-        to="/search"
-        class="font-[500] bg-[#2F80ED] text-white rounded-md py-2 px-5"
-      >
-        Search
-      </router-link>
+    <button
+      @click="handleSearch"
+      class="font-[500] bg-[#2F80ED] text-white rounded-md py-2 px-5"
+    >
+      Search
     </button>
   </div>
 </template>
 
 <script setup>
 import { onMounted, ref } from "vue";
-import VueDatePicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
 import axios from "axios";
-import { useSearchStore } from "../stores/search";
+import { useHotelsStore } from "../stores/hotels";
+import { useRouter } from "vue-router";
 
-const searchStore = useSearchStore();
+const router = useRouter();
 
-const searchQueries = searchStore.searchQueries;
+const hotelsStore = useHotelsStore();
+
+const searchQueries = hotelsStore.searchQueries;
 
 const destination = ref(searchQueries.destination || "0");
 const checkIn = ref(searchQueries.checkIn);
@@ -78,9 +88,9 @@ const checkOut = ref(searchQueries.checkOut);
 const guests = ref(searchQueries.guests || "0");
 const rooms = ref(searchQueries.rooms || "0");
 
-const allDestinations = ref([]);
+const destinationOptions = ref([]);
 
-const getAllDestinations = async () => {
+const getDestinationOptions = async () => {
   const options = {
     method: "GET",
     url: "https://booking-com15.p.rapidapi.com/api/v1/hotels/searchDestination",
@@ -93,23 +103,24 @@ const getAllDestinations = async () => {
 
   try {
     const response = await axios.request(options);
-    allDestinations.value = response.data.data;
+    destinationOptions.value = response.data.data;
   } catch (error) {
     console.error(error);
   }
 };
 
 onMounted(() => {
-  getAllDestinations();
+  getDestinationOptions();
 });
 
-const changeSearchQuery = () => {
-  searchStore.updateSearchQueries({
-    destination: destination.value,
-    checkIn: checkIn.value,
-    checkOut: checkOut.value,
-    guests: guests.value,
-    rooms: rooms.value,
+const changeSearchQuery = (e) => {
+  hotelsStore.addSearchQuery({
+    [e.target.name]: e.target.value,
   });
+};
+
+const handleSearch = async () => {
+  hotelsStore.fetchHotels();
+  router.push("/search");
 };
 </script>

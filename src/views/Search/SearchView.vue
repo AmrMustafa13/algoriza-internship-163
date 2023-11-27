@@ -7,6 +7,17 @@
   </div>
   <div class="container">
     <SearchBar />
+    <div v-if="hotelsStore.isLoading">
+      <LoadingSpinner />
+    </div>
+    <div v-else-if="hotelsStore.hasNoResults">
+      <h1 class="text-2xl font-semibold text-[#181818] mt-8">
+        No hotels found
+      </h1>
+    </div>
+    <div v-else-if="hotelsStore.hasResults">
+      {{ hotelsStore.allHotels.length }}
+    </div>
     <CovidStatus />
     <Footer />
   </div>
@@ -20,6 +31,8 @@ import SearchBar from "../../components/SearchBar.vue";
 import CovidStatus from "../../components/CovidStatus.vue";
 import Footer from "../../components/Footer.vue";
 import CopyRights from "../../components/CopyRights.vue";
-</script>
+import LoadingSpinner from "../../components/LoadingSpinner.vue";
+import { useHotelsStore } from "../../stores/hotels";
 
-<style lang="scss" scoped></style>
+const hotelsStore = useHotelsStore();
+</script>
