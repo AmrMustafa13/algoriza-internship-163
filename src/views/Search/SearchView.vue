@@ -7,16 +7,15 @@
   </div>
   <div class="container">
     <SearchBar />
-    <div v-if="hotelsStore.isLoading">
-      <LoadingSpinner />
-    </div>
-    <div v-else-if="hotelsStore.hasNoResults">
-      <h1 class="text-2xl font-semibold text-[#181818] mt-8">
-        No hotels found
-      </h1>
-    </div>
-    <div v-else-if="hotelsStore.hasResults">
-      {{ hotelsStore.allHotels.length }}
+    <div class="flex justify-between gap-8">
+      <div class="flex-1 flex flex-col gap-8">
+        <SearchByPropertyName />
+        <FilterByBudget />
+        <FilterByRating />
+      </div>
+      <div class="flex-[2]">
+        <SearchResults />
+      </div>
     </div>
     <CovidStatus />
     <Footer />
@@ -31,8 +30,8 @@ import SearchBar from "../../components/SearchBar.vue";
 import CovidStatus from "../../components/CovidStatus.vue";
 import Footer from "../../components/Footer.vue";
 import CopyRights from "../../components/CopyRights.vue";
-import LoadingSpinner from "../../components/LoadingSpinner.vue";
-import { useHotelsStore } from "../../stores/hotels";
-
-const hotelsStore = useHotelsStore();
+import SearchResults from "./components/SearchResults.vue";
+import SearchByPropertyName from "./components/SearchByPropertyName.vue";
+import FilterByBudget from "./components/FilterByBudget.vue";
+import FilterByRating from "./components/FilterByRating.vue";
 </script>

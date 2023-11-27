@@ -20,7 +20,7 @@ export const useHotelsStore = defineStore("hotels", () => {
       method: "GET",
       url: "https://booking-com15.p.rapidapi.com/api/v1/hotels/searchHotels",
       params: {
-        dest_id: searchQueries.value.destination,
+        dest_id: searchQueries.value.destination.split(",")[0],
         search_type: "CITY",
         arrival_date: searchQueries.value.checkIn,
         departure_date: searchQueries.value.checkOut,
@@ -36,10 +36,10 @@ export const useHotelsStore = defineStore("hotels", () => {
       isLoading.value = true;
       const response = await axios.request(options);
       allHotels.value = response.data.data?.hotels;
+      isLoading.value = false;
     } catch (error) {
       console.error(error);
     }
-    isLoading.value = false;
   };
 
   return {

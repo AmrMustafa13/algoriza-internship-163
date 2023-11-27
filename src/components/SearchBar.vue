@@ -12,7 +12,7 @@
       <option
         v-for="destination in destinationOptions"
         :key="destination.dest_id"
-        :value="destination.dest_id"
+        :value="destination.dest_id + ',' + destination.name"
       >
         {{ destination.name }}
       </option>
