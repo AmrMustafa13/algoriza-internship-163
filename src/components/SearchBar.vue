@@ -75,8 +75,11 @@ import { onMounted, ref } from "vue";
 import axios from "axios";
 import { useHotelsStore } from "../stores/hotels";
 import { useRouter } from "vue-router";
+import { useToast } from "vue-toastification";
 
 const router = useRouter();
+
+const toast = useToast();
 
 const hotelsStore = useHotelsStore();
 
@@ -94,7 +97,7 @@ const getDestinationOptions = async () => {
   const options = {
     method: "GET",
     url: "https://booking-com15.p.rapidapi.com/api/v1/hotels/searchDestination",
-    params: { query: "man" },
+    params: { query: "egypt" },
     headers: {
       "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
       "X-RapidAPI-Host": "booking-com15.p.rapidapi.com",
@@ -120,6 +123,17 @@ const changeSearchQuery = (e) => {
 };
 
 const handleSearch = async () => {
+  if (
+    !destination.value ||
+    !checkIn.value ||
+    !checkOut.value ||
+    !guests.value ||
+    !rooms.value
+  ) {
+    toast.error("Please fill all the fields");
+    return;
+  }
+
   hotelsStore.fetchHotels();
   router.push("/search");
 };

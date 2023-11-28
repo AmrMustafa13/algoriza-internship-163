@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-8">
     <div class="flex justify-between gap-8">
       <h1 class="text-2xl font-semibold text-[#181818]">
         {{ hotelsStore.searchQueries.destination?.split(",")[1] }} :
@@ -27,7 +27,17 @@
         No hotels found
       </h1>
     </div>
-    <div v-else-if="hotelsStore.hasResults">Hotels</div>
+    <div v-else-if="hotelsStore.hasResults">
+      <div class="flex flex-col gap-8">
+        <SearchResultCard
+          v-for="hotel in hotelsStore.allHotels"
+          :key="hotel.hotel_id"
+          :hotel="hotel.property"
+          :hotelParagraph="hotel.accessibilityLabel"
+          :hotelId="hotel.hotel_id"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -36,6 +46,7 @@ import LoadingSpinner from "../../../components/LoadingSpinner.vue";
 import { useHotelsStore } from "../../../stores/hotels";
 import axios from "axios";
 import { ref, onMounted } from "vue";
+import SearchResultCard from "./SearchResultCard.vue";
 
 const hotelsStore = useHotelsStore();
 
@@ -63,7 +74,6 @@ const getSortByOptions = async () => {
 
   try {
     const response = await axios.request(options);
-    console.log(response.data.data);
     sortByOptions.value = response.data.data;
   } catch (error) {
     console.error(error);
