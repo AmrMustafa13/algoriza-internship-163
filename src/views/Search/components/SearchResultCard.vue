@@ -13,11 +13,12 @@
       <span>
         {{ hotelParagraph }}
       </span>
-      <button
-        @click="handleSearch"
-        class="font-[500] bg-[#2F80ED] text-white rounded-md py-2 px-5 self-start"
-      >
-        <router-link :to="`/hotel/${hotelId}`">See Availability</router-link>
+      <button @click="handleSearch" class="self-start mt-2">
+        <router-link
+          :to="`/hotel/${hotelId}`"
+          class="font-[500] bg-[#2F80ED] text-white rounded-md py-3 px-5"
+          >See Availability</router-link
+        >
       </button>
     </div>
   </div>

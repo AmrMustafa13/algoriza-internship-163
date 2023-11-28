@@ -11,7 +11,7 @@
       />
       <input
         type="text"
-        class="w-full border-none outline-none p-2"
+        class="w-full border-none outline-none p-2 placeholder:text-[#4f4f4f]"
         placeholder="eg. Beach westpalm"
       />
     </div>
