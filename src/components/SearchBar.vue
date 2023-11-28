@@ -26,6 +26,7 @@
       class="border border-gray-300 rounded-md px-4 py-2 w-full"
       v-model="checkIn"
       @change="changeSearchQuery"
+      :min="today.toISOString().split('T')[0]"
     />
     <input
       type="text"
@@ -36,6 +37,7 @@
       class="border border-gray-300 rounded-md px-4 py-2 w-full"
       v-model="checkOut"
       @change="changeSearchQuery"
+      :min="tomorrow.toISOString().split('T')[0]"
     />
     <select
       class="border border-gray-300 rounded-md px-4 py-2 w-full"
@@ -91,6 +93,10 @@ const checkOut = ref(searchQueries.checkOut);
 const guests = ref(searchQueries.guests || "0");
 const rooms = ref(searchQueries.rooms || "0");
 
+const today = new Date();
+const tomorrow = new Date(today);
+tomorrow.setDate(tomorrow.getDate() + 1);
+
 const destinationOptions = ref([]);
 
 const getDestinationOptions = async () => {
@@ -131,6 +137,11 @@ const handleSearch = async () => {
     !rooms.value
   ) {
     toast.error("Please fill all the fields");
+    return;
+  }
+
+  if (checkIn.value > checkOut.value) {
+    toast.error("Check in date must be before check out date");
     return;
   }
 

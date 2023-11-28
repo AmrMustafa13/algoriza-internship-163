@@ -59,7 +59,7 @@ const getSortByOptions = async () => {
     method: "GET",
     url: "https://booking-com15.p.rapidapi.com/api/v1/hotels/getSortBy",
     params: {
-      dest_id: searchQueries.destination.split(",")[0],
+      dest_id: searchQueries.destination?.split(",")[0],
       search_type: "CITY",
       arrival_date: searchQueries.checkIn,
       departure_date: searchQueries.checkOut,
