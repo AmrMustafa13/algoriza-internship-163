@@ -13,7 +13,7 @@
         <FilterByBudget />
         <FilterByRating />
       </div>
-      <div class="flex-[2]">
+      <div class="flex-[3]">
         <SearchResults />
       </div>
     </div>
