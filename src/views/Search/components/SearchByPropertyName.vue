@@ -2,7 +2,7 @@
   <div class="bg-[#F2F2F2] rounded-md p-4 flex flex-col gap-2">
     <h3 class="text-[#181818] text-[500]">Search by property name</h3>
     <div
-      class="flex items-center gap-2 border border-[#E2E2E2] rounded-md p-2 bg-white"
+      class="flex items-center gap-2 border border-[#E2E2E2] rounded-md px-2 bg-white"
     >
       <img
         src="../../../assets/images/search.svg"

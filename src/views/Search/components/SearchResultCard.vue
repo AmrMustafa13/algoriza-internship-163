@@ -9,7 +9,22 @@
     </div>
     <div class="text-sm text-[#4f4f4f] flex flex-col gap-4">
       <h2 class="text-[#1a1a1a] text-[500] text-xl">{{ hotel.name }}</h2>
-      <p>{{ hotel.reviewScore }} ({{ hotel.reviewCount }} reviews)</p>
+      <div class="flex gap-2 items-center">
+        <div class="flex items-center">
+          <img
+            v-for="star in renderStarsFromRating(
+              (hotel.reviewScore / 2).toFixed(1)
+            )"
+            :key="star"
+            :src="star"
+            alt="star"
+          />
+        </div>
+        <p>
+          {{ (hotel.reviewScore / 2).toFixed(1) }} ({{ hotel.reviewCount }}
+          reviews)
+        </p>
+      </div>
       <span>
         {{ hotelParagraph }}
       </span>
@@ -41,4 +56,20 @@ const props = defineProps({
     required: true,
   },
 });
+
+const renderStarsFromRating = (rating) => {
+  const stars = [];
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+
+  for (let i = 0; i < fullStars; i++) {
+    stars.push("/src/assets/images/stars/full.svg");
+  }
+
+  if (hasHalfStar) {
+    stars.push("/src/assets/images/stars/half.svg");
+  }
+
+  return stars;
+};
 </script>
