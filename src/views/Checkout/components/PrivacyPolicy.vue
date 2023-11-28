@@ -26,6 +26,7 @@
       </p>
       <button
         class="font-[500] bg-[#2F80ED] text-white rounded-md py-2 px-5 self-start"
+        @click="$emit('addTrip')"
       >
         Complete Booking
       </button>
@@ -43,4 +44,6 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const emit = defineEmits(["addTrip"]);
+</script>
