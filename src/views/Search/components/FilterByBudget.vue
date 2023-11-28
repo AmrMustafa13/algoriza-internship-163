@@ -1,5 +1,5 @@
 <template>
-  <div>budget</div>
+  <div>bg</div>
 </template>
 
 <script setup></script>
