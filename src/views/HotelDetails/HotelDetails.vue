@@ -10,6 +10,11 @@
       </div>
     </div>
   </div>
+  <div class="container">
+    <CovidStatus />
+    <Footer />
+  </div>
+  <CopyRights />
 </template>
 
 <script setup>
@@ -20,6 +25,9 @@ import { onMounted, ref } from "vue";
 import LoadingSpinner from "../../components/LoadingSpinner.vue";
 import Navbar from "../../components/Navbar.vue";
 import HotelGallery from "./components/HotelGallery.vue";
+import CovidStatus from "../../components/CovidStatus.vue";
+import Footer from "../../components/Footer.vue";
+import CopyRights from "../../components/CopyRights.vue";
 
 const hotelsStore = useHotelsStore();
 
