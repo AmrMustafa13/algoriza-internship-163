@@ -112,7 +112,10 @@ const getDestinationOptions = async () => {
 
   try {
     const response = await axios.request(options);
-    destinationOptions.value = response.data.data;
+    // filter search type to only cities
+    destinationOptions.value = response.data.data.filter(
+      (destination) => destination.search_type === "city"
+    );
   } catch (error) {
     console.error(error);
   }

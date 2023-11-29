@@ -3,7 +3,7 @@
     <div class="flex justify-between gap-8">
       <h1 class="text-2xl font-semibold text-[#181818]">
         {{ hotelsStore.searchQueries.destination?.split(",")[1] }} :
-        {{ hotelsStore.allHotels.length }} search results found
+        {{ hotelsStore.totalResults }} search results found
       </h1>
       <div class="flex flex-col border border-gray-300 rounded-md p-2">
         <label for="sortby" class="text-[12px] text-[#828282]">Sort By</label>
@@ -37,6 +37,9 @@
           :hotelId="hotel.hotel_id"
         />
       </div>
+      <div class="flex justify-center items-center">
+        <Pagination />
+      </div>
     </div>
   </div>
 </template>
@@ -47,6 +50,7 @@ import { useHotelsStore } from "../../../stores/hotels";
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import SearchResultCard from "./SearchResultCard.vue";
+import Pagination from "./Pagination.vue";
 
 const hotelsStore = useHotelsStore();
 
