@@ -14,7 +14,7 @@
         <FilterByRating />
       </div>
       <div class="flex-[3]">
-        <SearchResults />
+        <SearchResults :hotels="hotelsStore.allHotels" />
       </div>
     </div>
     <CovidStatus />
@@ -34,4 +34,8 @@ import SearchResults from "./components/SearchResults.vue";
 import SearchByPropertyName from "./components/SearchByPropertyName.vue";
 import FilterByBudget from "./components/FilterByBudget.vue";
 import FilterByRating from "./components/FilterByRating.vue";
+
+import { useHotelsStore } from "../../stores/hotels";
+
+const hotelsStore = useHotelsStore();
 </script>

@@ -15,6 +15,12 @@ export const useHotelsStore = defineStore("hotels", () => {
   const hasResults = computed(() => allHotels.value.length > 0);
   const hasNoResults = computed(() => allHotels.value.length === 0);
 
+  const filterByPropertyName = (propetyName) => {
+    allHotels.value = allHotels.value.filter((hotel) =>
+      hotel.property.name.toLowerCase().includes(propetyName.toLowerCase())
+    );
+  };
+
   const addSearchQuery = (query) => {
     searchQueries.value = { ...searchQueries.value, ...query };
   };
@@ -93,5 +99,6 @@ export const useHotelsStore = defineStore("hotels", () => {
     hasNoResults,
     changePage,
     paginateHotels,
+    filterByPropertyName,
   };
 });

@@ -30,7 +30,7 @@
     <div v-else-if="hotelsStore.hasResults">
       <div class="flex flex-col gap-8">
         <SearchResultCard
-          v-for="hotel in hotelsStore.allHotels"
+          v-for="hotel in hotels"
           :key="hotel.hotel_id"
           :hotel="hotel.property"
           :hotelParagraph="hotel.accessibilityLabel"
@@ -51,6 +51,14 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 import SearchResultCard from "./SearchResultCard.vue";
 import Pagination from "./Pagination.vue";
+import { defineProps } from "vue";
+
+const props = defineProps({
+  hotels: {
+    type: Array,
+    required: true,
+  },
+});
 
 const hotelsStore = useHotelsStore();
 
