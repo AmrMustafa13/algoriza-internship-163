@@ -4,20 +4,83 @@
       Your budget per day
     </h3>
     <div
-      class="flex items-center gap-4 rounded-md p-4 m-4 mt-2 bg-white border border-dashed border-[#E2E2E2]"
+      class="flex flex-col gap-4 rounded-md p-4 m-4 mt-2 bg-white border border-dashed border-[#E2E2E2]"
     >
-      <input
-        type="text"
-        class="w-full outline-none p-2 border border-[#e0e0e0] rounded-md placeholder:text-[#333]"
-        placeholder="Min budget"
-      />
-      <input
-        type="text"
-        class="w-full outline-none p-2 border border-[#e0e0e0] rounded-md placeholder:text-[#333]"
-        placeholder="Max budget"
-      />
+      <form class="flex items-center gap-4">
+        <input
+          type="text"
+          class="w-full outline-none p-2 border border-[#e0e0e0] rounded-md placeholder:text-[#333]"
+          placeholder="Min budget"
+          v-model="minBudget"
+          name="minBudget"
+          @keydown.enter.exact.prevent="handleSubmit"
+          @change="changeBudgetFilter"
+        />
+        <input
+          type="text"
+          class="w-full outline-none p-2 border border-[#e0e0e0] rounded-md placeholder:text-[#333]"
+          placeholder="Max budget"
+          v-model="maxBudget"
+          name="maxBudget"
+          @keydown.enter.exact.prevent="handleSubmit"
+          @change="changeBudgetFilter"
+        />
+      </form>
+      <span class="text-[#4F4F4F] text-sm">Press Enter to filter</span>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import { useHotelsStore } from "../../../stores/hotels";
+import { useToast } from "vue-toastification";
+
+const toast = useToast();
+
+const hotelsStore = useHotelsStore();
+
+const minBudget = ref("");
+const maxBudget = ref("");
+
+const changeBudgetFilter = (e) => {
+  hotelsStore.addBudgetFilter({
+    [e.target.name]: e.target.value,
+  });
+};
+
+const handleSubmit = () => {
+  if (minBudget.value !== "" && maxBudget.value !== "") {
+    if (+minBudget.value > +maxBudget.value) {
+      toast.error("Min budget cannot be greater than max budget");
+    } else {
+      hotelsStore.addBudgetFilter({
+        minBudget: minBudget.value,
+        maxBudget: maxBudget.value,
+      });
+    }
+  } else if (minBudget.value !== "" && maxBudget.value === "") {
+    hotelsStore.addBudgetFilter({
+      minBudget: minBudget.value,
+    });
+  } else if (maxBudget.value !== "" && minBudget.value === "") {
+    hotelsStore.addBudgetFilter({
+      maxBudget: maxBudget.value,
+    });
+  }
+
+  if (minBudget.value === "") {
+    hotelsStore.addBudgetFilter({
+      minBudget: 0,
+    });
+  }
+
+  if (maxBudget.value === "") {
+    hotelsStore.addBudgetFilter({
+      maxBudget: Infinity,
+    });
+  }
+
+  hotelsStore.fetchHotels();
+};
+</script>

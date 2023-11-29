@@ -28,6 +28,7 @@
       <span>
         {{ hotelParagraph }}
       </span>
+      <span>{{ hotel.priceBreakdown.grossPrice.value.toFixed(2) }}</span>
       <button @click="handleSearch" class="self-start mt-2">
         <router-link
           :to="`/hotel/${hotelId}`"

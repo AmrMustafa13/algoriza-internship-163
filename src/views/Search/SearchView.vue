@@ -13,7 +13,10 @@
         <FilterByBudget />
         <FilterByRating />
       </div>
-      <div class="flex-[3]">
+      <div class="flex-[3]" v-if="hotelsStore.filteredHotels.length > 0">
+        <SearchResults :hotels="hotelsStore.filteredHotels" />
+      </div>
+      <div class="flex-[3]" v-else>
         <SearchResults :hotels="hotelsStore.allHotels" />
       </div>
     </div>

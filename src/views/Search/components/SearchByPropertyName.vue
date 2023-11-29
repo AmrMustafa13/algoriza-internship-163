@@ -14,20 +14,17 @@
         class="w-full border-none outline-none p-2 placeholder:text-[#4f4f4f]"
         placeholder="eg. Beach westpalm"
         v-model="propertySearch"
+        @input="hotelsStore.filterByPropertyName(propertySearch)"
       />
     </div>
   </div>
 </template>
 
 <script setup>
-import { watch, ref } from "vue";
+import { ref } from "vue";
 import { useHotelsStore } from "../../../stores/hotels";
 
 const hotelsStore = useHotelsStore();
 
 const propertySearch = ref("");
-
-watch(propertySearch, (value) => {
-  hotelsStore.filterByPropertyName(value);
-});
 </script>

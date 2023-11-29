@@ -100,6 +100,6 @@ const { currentPage } = storeToRefs(hotelsStore);
 
 watch(currentPage, () => {
   window.scrollTo(0, 0);
-  hotelsStore.paginateHotels();
+  hotelsStore.fetchHotels();
 });
 </script>

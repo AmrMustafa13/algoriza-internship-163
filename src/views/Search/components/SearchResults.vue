@@ -7,7 +7,12 @@
       </h1>
       <div class="flex flex-col border border-gray-300 rounded-md p-2">
         <label for="sortby" class="text-[12px] text-[#828282]">Sort By</label>
-        <select name="sortby" id="sortby" class="bg-transparent outline-none">
+        <select
+          name="sortby"
+          id="sortby"
+          class="bg-transparent outline-none"
+          v-model="sortByValue"
+        >
           <option value="0" disabled>Sort by</option>
           <option
             v-for="option in sortByOptions"
@@ -48,10 +53,12 @@
 import LoadingSpinner from "../../../components/LoadingSpinner.vue";
 import { useHotelsStore } from "../../../stores/hotels";
 import axios from "axios";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import SearchResultCard from "./SearchResultCard.vue";
 import Pagination from "./Pagination.vue";
 import { defineProps } from "vue";
+
+const sortByValue = ref(0);
 
 const props = defineProps({
   hotels: {
@@ -94,5 +101,10 @@ const getSortByOptions = async () => {
 
 onMounted(() => {
   getSortByOptions();
+});
+
+watch(sortByValue, (value) => {
+  hotelsStore.sortHotelsBy(value);
+  hotelsStore.fetchHotels();
 });
 </script>
