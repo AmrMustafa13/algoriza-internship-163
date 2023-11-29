@@ -3,7 +3,11 @@ import { defineStore } from "pinia";
 import axios from "axios";
 
 export const useHotelsStore = defineStore("hotels", () => {
-  const searchQueries = ref({});
+  const searchQueries = ref(
+    localStorage.getItem("searchQueries")
+      ? JSON.parse(localStorage.getItem("searchQueries"))
+      : {}
+  );
 
   const currentPage = ref(1);
   const totalPages = ref(0);
@@ -42,6 +46,8 @@ export const useHotelsStore = defineStore("hotels", () => {
 
   const addSearchQuery = (query) => {
     searchQueries.value = { ...searchQueries.value, ...query };
+    // save search query to local storage
+    localStorage.setItem("searchQueries", JSON.stringify(searchQueries.value));
   };
 
   const addBudgetFilter = (budgetObj) => {

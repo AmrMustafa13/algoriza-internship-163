@@ -37,8 +37,13 @@ import SearchResults from "./components/SearchResults.vue";
 import SearchByPropertyName from "./components/SearchByPropertyName.vue";
 import FilterByBudget from "./components/FilterByBudget.vue";
 import FilterByRating from "./components/FilterByRating.vue";
+import { onMounted } from "vue";
 
 import { useHotelsStore } from "../../stores/hotels";
 
 const hotelsStore = useHotelsStore();
+
+onMounted(() => {
+  hotelsStore.fetchHotels();
+});
 </script>
