@@ -1,5 +1,5 @@
 <template>
-  <div class="font-worksans">
+  <div class="font-sfprodisplay">
     <router-view />
   </div>
 </template>

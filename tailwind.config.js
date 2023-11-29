@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        worksans: ["Work Sans", "sans-serif"],
+        sfprodisplay: ["SF Pro Display", "sans-serif"],
       },
     },
     container: {
