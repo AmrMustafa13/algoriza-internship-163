@@ -13,18 +13,17 @@
         type="text"
         class="w-full border-none outline-none p-2 placeholder:text-[#4f4f4f]"
         placeholder="eg. Beach westpalm"
-        v-model="propertySearch"
-        @input="hotelsStore.filterByPropertyName(propertySearch)"
+        v-model="propertyNameFilter"
       />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { useHotelsStore } from "../../../stores/hotels";
+import { storeToRefs } from "pinia";
 
 const hotelsStore = useHotelsStore();
 
-const propertySearch = ref("");
+const { propertyNameFilter } = storeToRefs(hotelsStore);
 </script>

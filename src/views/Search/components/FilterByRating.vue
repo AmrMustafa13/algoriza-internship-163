@@ -7,34 +7,72 @@
     >
       <div
         class="flex justify-center items-center gap-1 cursor-pointer border-r border-[#e2e2e2] p-4"
+        @click="changeRatingFilter"
       >
-        <span>1</span>
-        <img src="../../../assets/images/stars/full.svg" alt="full-star" />
+        <span class="pointer-events-none">1</span>
+        <img
+          src="../../../assets/images/stars/full.svg"
+          alt="full-star"
+          class="pointer-events-none"
+        />
       </div>
       <div
         class="flex justify-center items-center gap-1 cursor-pointer border-r border-[#e2e2e2] p-4"
+        @click="changeRatingFilter"
       >
-        <span>2</span>
-        <img src="../../../assets/images/stars/full.svg" alt="full-star" />
+        <span class="pointer-events-none">2</span>
+        <img
+          src="../../../assets/images/stars/full.svg"
+          alt="full-star"
+          class="pointer-events-none"
+        />
       </div>
       <div
         class="flex justify-center items-center gap-1 cursor-pointer border-r border-[#e2e2e2] p-4"
+        @click="changeRatingFilter"
       >
-        <span>3</span>
-        <img src="../../../assets/images/stars/full.svg" alt="full-star" />
+        <span class="pointer-events-none">3</span>
+        <img
+          src="../../../assets/images/stars/full.svg"
+          alt="full-star"
+          class="pointer-events-none"
+        />
       </div>
       <div
         class="flex justify-center items-center gap-1 cursor-pointer border-r border-[#e2e2e2] p-4"
+        @click="changeRatingFilter"
       >
-        <span>4</span>
-        <img src="../../../assets/images/stars/full.svg" alt="full-star" />
+        <span class="pointer-events-none">4</span>
+        <img
+          src="../../../assets/images/stars/full.svg"
+          alt="full-star"
+          class="pointer-events-none"
+        />
       </div>
-      <div class="flex justify-center items-center gap-1 cursor-pointer p-4">
-        <span>5</span>
-        <img src="../../../assets/images/stars/full.svg" alt="full-star" />
+      <div
+        class="flex justify-center items-center gap-1 cursor-pointer p-4"
+        @click.stop="changeRatingFilter"
+      >
+        <span class="pointer-events-none">5</span>
+        <img
+          src="../../../assets/images/stars/full.svg"
+          alt="full-star"
+          class="pointer-events-none"
+        />
       </div>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { storeToRefs } from "pinia";
+import { useHotelsStore } from "../../../stores/hotels";
+
+const hotelsStore = useHotelsStore();
+
+const { ratingFilter } = storeToRefs(hotelsStore);
+
+const changeRatingFilter = (e) => {
+  ratingFilter.value = e.target.children[0].textContent;
+};
+</script>

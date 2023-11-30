@@ -116,13 +116,27 @@ const getDestinationOptions = async () => {
     destinationOptions.value = response.data.data.filter(
       (destination) => destination.search_type === "city"
     );
+    // save to local storage
+    localStorage.setItem(
+      "destinationOptions",
+      JSON.stringify(destinationOptions.value)
+    );
   } catch (error) {
     console.error(error);
   }
 };
 
 onMounted(() => {
-  getDestinationOptions();
+  // get destination options from local storage
+  const destinationOptionsFromLocalStorage = JSON.parse(
+    localStorage.getItem("destinationOptions")
+  );
+  // if destination options are not in local storage, fetch them
+  if (!destinationOptionsFromLocalStorage) {
+    getDestinationOptions();
+  } else {
+    destinationOptions.value = destinationOptionsFromLocalStorage;
+  }
 });
 
 const changeSearchQuery = (e) => {

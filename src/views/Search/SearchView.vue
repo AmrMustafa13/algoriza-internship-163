@@ -13,7 +13,10 @@
         <FilterByBudget />
         <FilterByRating />
       </div>
-      <div class="flex-[3]" v-if="hotelsStore.filteredHotels.length > 0">
+      <div
+        class="flex-[3]"
+        v-if="hotelsStore.propertyNameFilter || hotelsStore.ratingFilter"
+      >
         <SearchResults :hotels="hotelsStore.filteredHotels" />
       </div>
       <div class="flex-[3]" v-else>
@@ -37,13 +40,8 @@ import SearchResults from "./components/SearchResults.vue";
 import SearchByPropertyName from "./components/SearchByPropertyName.vue";
 import FilterByBudget from "./components/FilterByBudget.vue";
 import FilterByRating from "./components/FilterByRating.vue";
-import { onMounted } from "vue";
 
 import { useHotelsStore } from "../../stores/hotels";
 
 const hotelsStore = useHotelsStore();
-
-onMounted(() => {
-  hotelsStore.fetchHotels();
-});
 </script>

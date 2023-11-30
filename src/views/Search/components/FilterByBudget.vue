@@ -35,13 +35,20 @@
 import { ref } from "vue";
 import { useHotelsStore } from "../../../stores/hotels";
 import { useToast } from "vue-toastification";
+import { storeToRefs } from "pinia";
 
 const toast = useToast();
 
 const hotelsStore = useHotelsStore();
 
-const minBudget = ref("");
-const maxBudget = ref("");
+const { budgetFilter } = storeToRefs(hotelsStore);
+
+const minBudget = ref(budgetFilter.value.minBudget || "");
+const maxBudget = ref(
+  (budgetFilter.value.maxBudget !== Infinity &&
+    budgetFilter.value.maxBudget !== null) ||
+    ""
+);
 
 const changeBudgetFilter = (e) => {
   hotelsStore.addBudgetFilter({
@@ -53,6 +60,7 @@ const handleSubmit = () => {
   if (minBudget.value !== "" && maxBudget.value !== "") {
     if (+minBudget.value > +maxBudget.value) {
       toast.error("Min budget cannot be greater than max budget");
+      return;
     } else {
       hotelsStore.addBudgetFilter({
         minBudget: minBudget.value,
@@ -62,21 +70,16 @@ const handleSubmit = () => {
   } else if (minBudget.value !== "" && maxBudget.value === "") {
     hotelsStore.addBudgetFilter({
       minBudget: minBudget.value,
+      maxBudget: Infinity,
     });
   } else if (maxBudget.value !== "" && minBudget.value === "") {
     hotelsStore.addBudgetFilter({
+      minBudget: 0,
       maxBudget: maxBudget.value,
     });
-  }
-
-  if (minBudget.value === "") {
+  } else {
     hotelsStore.addBudgetFilter({
       minBudget: 0,
-    });
-  }
-
-  if (maxBudget.value === "") {
-    hotelsStore.addBudgetFilter({
       maxBudget: Infinity,
     });
   }

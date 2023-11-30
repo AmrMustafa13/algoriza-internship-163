@@ -11,7 +11,8 @@
           name="sortby"
           id="sortby"
           class="bg-transparent outline-none"
-          v-model="sortByValue"
+          v-model="hotelsStore.sortByOption"
+          @change="handleSortOptionChange"
         >
           <option value="0" disabled>Sort by</option>
           <option
@@ -53,12 +54,10 @@
 import LoadingSpinner from "../../../components/LoadingSpinner.vue";
 import { useHotelsStore } from "../../../stores/hotels";
 import axios from "axios";
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted } from "vue";
 import SearchResultCard from "./SearchResultCard.vue";
 import Pagination from "./Pagination.vue";
 import { defineProps } from "vue";
-
-const sortByValue = ref(0);
 
 const props = defineProps({
   hotels: {
@@ -94,17 +93,25 @@ const getSortByOptions = async () => {
   try {
     const response = await axios.request(options);
     sortByOptions.value = response.data.data;
+    // save to local storage
+    localStorage.setItem("sortByOptions", JSON.stringify(sortByOptions.value));
   } catch (error) {
     console.error(error);
   }
 };
 
 onMounted(() => {
-  getSortByOptions();
+  if (localStorage.getItem("sortByOptions")) {
+    sortByOptions.value = JSON.parse(localStorage.getItem("sortByOptions"));
+  } else {
+    getSortByOptions();
+  }
 });
 
-watch(sortByValue, (value) => {
-  hotelsStore.sortHotelsBy(value);
+const handleSortOptionChange = (event) => {
+  hotelsStore.sortByOption = event.target.value;
+  // save to local storage
+  localStorage.setItem("sortByOption", hotelsStore.sortByOption);
   hotelsStore.fetchHotels();
-});
+};
 </script>
