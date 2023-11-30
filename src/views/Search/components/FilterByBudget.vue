@@ -45,8 +45,7 @@ const { budgetFilter } = storeToRefs(hotelsStore);
 
 const minBudget = ref(budgetFilter.value.minBudget || "");
 const maxBudget = ref(
-  (budgetFilter.value.maxBudget !== Infinity &&
-    budgetFilter.value.maxBudget !== null) ||
+  (budgetFilter.value.maxBudget !== Infinity && budgetFilter.value.maxBudget) ||
     ""
 );
 

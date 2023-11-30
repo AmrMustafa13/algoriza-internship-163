@@ -10,6 +10,7 @@
     <div class="flex justify-between gap-8">
       <div class="flex-1 flex flex-col gap-8">
         <SearchByPropertyName />
+        <h2 class="text-[#333] text-xl font-semibold">Filter by</h2>
         <FilterByBudget />
         <FilterByRating />
       </div>
