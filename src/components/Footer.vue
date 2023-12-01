@@ -1,5 +1,5 @@
 <template>
-  <footer class="text-[#4F4F4F] grid grid-cols-5 gap-24 mb-16">
+  <footer class="text-[#4F4F4F] grid grid-cols-5 gap-24 pb-16">
     <div class="flex flex-col gap-5">
       <div class="flex items-center gap-1 font-[500] text-lg">
         <img src="../assets/images/logo.png" alt="logo" />

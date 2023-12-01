@@ -5,7 +5,9 @@ import WelcomeModal from '../../components/WelcomeModal.vue';
     <Navbar />
     <Header />
     <SearchBar />
-    <CovidStatus />
+    <div class="mt-4">
+      <CovidStatus />
+    </div>
     <DreamVacation />
     <Inspiration />
     <PopularHotels />

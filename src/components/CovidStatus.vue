@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-[#FCEFCA] text-[#333] flex items-center gap-5 p-6 rounded-md mb-16 mt-8"
+    class="bg-[#FCEFCA] text-[#333] flex items-center gap-5 p-6 rounded-md mb-16"
   >
     <img src="../assets/images/danger.png" alt="danger" />
     <p>

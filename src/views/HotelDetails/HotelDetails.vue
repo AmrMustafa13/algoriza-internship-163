@@ -1,9 +1,11 @@
 <template>
-  <Navbar />
+  <div class="container">
+    <Navbar />
+  </div>
   <div v-if="isLoading">
     <LoadingSpinner />
   </div>
-  <div class="bg-[#f4f4f4]" v-else>
+  <div class="bg-[#f4f4f4] pb-16" v-else>
     <div class="bg-gradient-to-b from-[#F4F4F400] to-[#fff]">
       <div class="container">
         <HotelGallery />
@@ -17,12 +19,14 @@
         />
         <HotelMap :hotelDetails="hotelDetails" />
       </div>
-      <AvailableRooms />
+      <AvailableRooms :availableRooms="availableRooms" />
     </div>
   </div>
-  <div class="container">
-    <CovidStatus />
-    <Footer />
+  <div class="bg-[#f4f4f4]">
+    <div class="container">
+      <CovidStatus />
+      <Footer />
+    </div>
   </div>
   <CopyRights />
 </template>
@@ -52,6 +56,7 @@ const hotelId = route.params.id;
 
 const hotelDetails = ref({});
 const hotelDescription = ref("");
+const availableRooms = ref([]);
 const isLoading = ref(false);
 
 const getHotelDescription = async () => {
@@ -71,6 +76,32 @@ const getHotelDescription = async () => {
   try {
     const response = await axios.request(options);
     hotelDescription.value = response.data.data[0].description;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const getAvailableRooms = async () => {
+  const options = {
+    method: "GET",
+    url: "https://booking-com15.p.rapidapi.com/api/v1/hotels/getRoomList",
+    params: {
+      hotel_id: hotelId,
+      arrival_date: searchQueries.checkIn,
+      departure_date: searchQueries.checkOut,
+      adults: searchQueries.guests,
+      room_qty: searchQueries.rooms,
+    },
+    headers: {
+      "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
+      "X-RapidAPI-Host": "booking-com15.p.rapidapi.com",
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    availableRooms.value = response.data.data.rooms;
+    console.log(availableRooms.value);
   } catch (error) {
     console.error(error);
   }
@@ -99,6 +130,7 @@ const fetchHotelDetails = async () => {
     console.log(response.data.data);
     hotelDetails.value = response.data.data;
     getHotelDescription();
+    getAvailableRooms();
     isLoading.value = false;
   } catch (error) {
     console.error(error);

@@ -30,7 +30,7 @@
         <h2 class="text-[#181818] text-lg mb-6">Top facilities</h2>
         <ul class="text-[#4f4f4f] text-[15px] flex flex-col gap-3">
           <li
-            v-for="item in hotelDetails.facilities_block.facilities"
+            v-for="item in hotelDetails?.facilities_block?.facilities"
             class="flex items-center gap-2"
           >
             <img src="../../../assets/images/wifi.svg" alt="wifi" />

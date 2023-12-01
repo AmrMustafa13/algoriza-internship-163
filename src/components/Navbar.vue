@@ -14,7 +14,7 @@
       <li>Contact</li>
     </ul>
     <div
-      class="flex justify-between items-center gap-2"
+      class="flex justify-between items-center gap-[22px]"
       v-if="authStore.isLoggedIn"
     >
       <img src="../assets/images/notification.png" alt="notification" />

@@ -6,7 +6,7 @@
   </div>
   <div class="bg-[rgb(244,244,244)]">
     <div class="container">
-      <h1 class="font-semibold text-3xl text-[#1A1A1A] pt-8">
+      <h1 class="font-semibold text-3xl text-[#1A1A1A] pt-8 mb-10">
         Secure your reservation
       </h1>
       <CovidStatus />
