@@ -7,14 +7,17 @@
     <div class="bg-gradient-to-b from-[#F4F4F400] to-[#fff]">
       <div class="container">
         <HotelGallery />
-        <div>
-          <div class="flex justify-between gap-4 py-8">
-            <HotelOverview />
-            <HotelMap :hotelDetails="hotelDetails" />
-          </div>
-          <AvailableRooms />
-        </div>
       </div>
+    </div>
+    <div class="container">
+      <div class="flex justify-between gap-10 py-8">
+        <HotelOverview
+          :hotelDetails="hotelDetails"
+          :hotelDescription="hotelDescription"
+        />
+        <HotelMap :hotelDetails="hotelDetails" />
+      </div>
+      <AvailableRooms />
     </div>
   </div>
   <div class="container">
@@ -48,7 +51,30 @@ const route = useRoute();
 const hotelId = route.params.id;
 
 const hotelDetails = ref({});
+const hotelDescription = ref("");
 const isLoading = ref(false);
+
+const getHotelDescription = async () => {
+  const options = {
+    method: "GET",
+    url: "https://booking-com15.p.rapidapi.com/api/v1/hotels/getDescriptionAndInfo",
+    params: {
+      hotel_id: hotelId,
+      languagecode: "en-us",
+    },
+    headers: {
+      "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
+      "X-RapidAPI-Host": "booking-com15.p.rapidapi.com",
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    hotelDescription.value = response.data.data[0].description;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const fetchHotelDetails = async () => {
   const options = {
@@ -72,6 +98,7 @@ const fetchHotelDetails = async () => {
     const response = await axios.request(options);
     console.log(response.data.data);
     hotelDetails.value = response.data.data;
+    getHotelDescription();
     isLoading.value = false;
   } catch (error) {
     console.error(error);
