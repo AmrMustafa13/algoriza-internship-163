@@ -32,6 +32,10 @@ export const useHotelsStore = defineStore("hotels", () => {
     }
   );
 
+  const fixedBudgetFilter = ref(
+    budgetFilter.value.minBudget + "-" + budgetFilter.value.maxBudget
+  );
+
   const propertyNameFilter = ref("");
 
   const ratingFilter = ref(0);
@@ -91,8 +95,8 @@ export const useHotelsStore = defineStore("hotels", () => {
         search_type: "CITY",
         arrival_date: searchQueries.value.checkIn,
         departure_date: searchQueries.value.checkOut,
-        adults: searchQueries.value.guests,
-        room_qty: searchQueries.value.rooms,
+        adults: +searchQueries.value.guests,
+        room_qty: +searchQueries.value.rooms,
         page_number: currentPage.value,
         sort_by: sortByOption.value,
         price_min: +budgetFilter.value.minBudget,
@@ -148,5 +152,6 @@ export const useHotelsStore = defineStore("hotels", () => {
     filterByBudget,
     addBudgetFilter,
     budgetFilter,
+    fixedBudgetFilter,
   };
 });

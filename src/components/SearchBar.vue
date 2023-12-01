@@ -39,30 +39,23 @@
       @change="changeSearchQuery"
       :min="tomorrow.toISOString().split('T')[0]"
     />
-    <select
+    <input
+      type="text"
+      name="guests"
+      placeholder="Guests"
       class="border border-gray-300 rounded-md px-4 py-2 w-full"
       v-model="guests"
       @change="changeSearchQuery"
-      name="guests"
-    >
-      <option value="0" disabled>Guests</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
-    <select
+    />
+
+    <input
+      type="text"
+      name="rooms"
+      placeholder="Rooms"
       class="border border-gray-300 rounded-md px-4 py-2 w-full"
       v-model="rooms"
       @change="changeSearchQuery"
-      name="rooms"
-    >
-      <option value="0" disabled>Rooms</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
+    />
     <button
       @click="handleSearch"
       class="font-[500] bg-[#2F80ED] text-white rounded-md py-2 px-5"
@@ -90,8 +83,8 @@ const searchQueries = hotelsStore.searchQueries;
 const destination = ref(searchQueries.destination || "0");
 const checkIn = ref(searchQueries.checkIn);
 const checkOut = ref(searchQueries.checkOut);
-const guests = ref(searchQueries.guests || "0");
-const rooms = ref(searchQueries.rooms || "0");
+const guests = ref(searchQueries.guests || "");
+const rooms = ref(searchQueries.rooms || "");
 
 const today = new Date();
 const tomorrow = new Date(today);
