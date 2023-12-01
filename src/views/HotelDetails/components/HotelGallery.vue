@@ -24,6 +24,19 @@
       </div>
     </div>
   </div>
+  <div>
+    <ul class="flex gap-2">
+      <li class="p-2 border-b-4 border-[#2F80ED] cursor-pointer">Overview</li>
+      <li class="p-2 cursor-pointer" @click="scrollTo('#available-rooms')">
+        Rooms
+      </li>
+    </ul>
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+const scrollTo = (selector) => {
+  const element = document.querySelector(selector);
+  element.scrollIntoView({ behavior: "smooth" });
+};
+</script>

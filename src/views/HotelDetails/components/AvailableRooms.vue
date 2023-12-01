@@ -1,5 +1,5 @@
 <template>
-  <div>Available Rooms</div>
+  <div id="available-rooms">Available Rooms</div>
 </template>
 
 <script setup></script>

@@ -7,6 +7,13 @@
     <div class="bg-gradient-to-b from-[#F4F4F400] to-[#fff]">
       <div class="container">
         <HotelGallery />
+        <div>
+          <div class="flex justify-between gap-4 py-8">
+            <HotelOverview />
+            <HotelMap :hotelDetails="hotelDetails" />
+          </div>
+          <AvailableRooms />
+        </div>
       </div>
     </div>
   </div>
@@ -28,6 +35,9 @@ import HotelGallery from "./components/HotelGallery.vue";
 import CovidStatus from "../../components/CovidStatus.vue";
 import Footer from "../../components/Footer.vue";
 import CopyRights from "../../components/CopyRights.vue";
+import HotelOverview from "./components/HotelOverview.vue";
+import HotelMap from "./components/HotelMap.vue";
+import AvailableRooms from "./components/AvailableRooms.vue";
 
 const hotelsStore = useHotelsStore();
 
