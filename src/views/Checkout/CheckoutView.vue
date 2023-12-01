@@ -17,7 +17,7 @@
           <PrivacyPolicy @addTrip="handleAddTrip" />
         </div>
         <div class="flex-1 flex flex-col gap-8">
-          <HotelCard />
+          <HotelCard :hotelDetails="tempHotel" />
           <PriceDetails />
         </div>
       </div>
@@ -37,8 +37,14 @@ import PrivacyPolicy from "./components/PrivacyPolicy.vue";
 import HotelCard from "./components/HotelCard.vue";
 import PriceDetails from "./components/PriceDetails.vue";
 import BookingModal from "../../components/BookingModal.vue";
+import { useHotelsStore } from "../../stores/hotels";
+
+const hotelsStore = useHotelsStore();
+
+const { tempHotel } = storeToRefs(hotelsStore);
 
 import { ref } from "vue";
+import { storeToRefs } from "pinia";
 
 const open = ref(false);
 

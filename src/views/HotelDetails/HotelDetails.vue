@@ -19,7 +19,10 @@
         />
         <HotelMap :hotelDetails="hotelDetails" />
       </div>
-      <AvailableRooms :availableRooms="availableRooms" />
+      <AvailableRooms
+        :availableRooms="availableRooms"
+        :hotelDetails="hotelDetails"
+      />
     </div>
   </div>
   <div class="bg-[#f4f4f4]">

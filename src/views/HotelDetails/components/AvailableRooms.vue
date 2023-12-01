@@ -56,6 +56,7 @@
           </div>
           <button
             class="font-[500] bg-[#2F80ED] text-white rounded-md py-3 mb-4 mx-4"
+            @click="handleResrveSuite"
           >
             Reserve suite
           </button>
@@ -70,11 +71,26 @@
 
 <script setup>
 import { defineProps } from "vue";
+import { useRouter } from "vue-router";
+import { useHotelsStore } from "../../../stores/hotels";
+
+const hotelsStore = useHotelsStore();
+
+const router = useRouter();
 
 const props = defineProps({
   availableRooms: {
     type: Object,
     required: true,
   },
+  hotelDetails: {
+    type: Object,
+    required: true,
+  },
 });
+
+const handleResrveSuite = () => {
+  hotelsStore.addTempHotel(hotelDetails);
+  router.push("/checkout");
+};
 </script>

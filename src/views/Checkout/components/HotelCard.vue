@@ -9,7 +9,9 @@
     </div>
 
     <div class="px-5 py-4 flex flex-col gap-4">
-      <p class="text-lg font-[500] text-[#333]">Lakeside Motel Warefront</p>
+      <p class="text-lg font-[500] text-[#333]">
+        {{ hotelDetails.hotel_name }}
+      </p>
       <div class="flex gap-2 items-center">
         <div class="flex items-center">
           <img src="../../../assets/images/stars/full.svg" alt="full-star" />
@@ -22,12 +24,33 @@
       </div>
       <div class="flex flex-col gap-2 text-sm text-[#4f4f4f]">
         <span class="text-[#EB5757]"> Non refundable </span>
-        <span>Check in: Sunday, March 18, 2022</span>
-        <span>Check out: Tuesday, March 20, 2022</span>
-        <span>2 night stay</span>
+        <span
+          >Check in:
+          {{ new Date(hotelDetails.arrival_date).toDateString() }}</span
+        >
+        <span
+          >Check out:
+          {{ new Date(hotelDetails.departure_date).toDateString() }}</span
+        >
+        <span>
+          {{
+            new Date(hotelDetails.departure_date).getDate() -
+            new Date(hotelDetails.arrival_date).getDate()
+          }}
+          night stay</span
+        >
       </div>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { defineProps } from "vue";
+
+const props = defineProps({
+  hotelDetails: {
+    type: Object,
+    required: true,
+  },
+});
+</script>

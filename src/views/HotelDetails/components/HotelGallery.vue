@@ -41,7 +41,6 @@
             class="rounded-md h-[215px] w-full object-cover"
           />
         </div>
-        :src="hotelImgs[2]?.url_640x200"
         <div>
           <img
             src="../../../assets/images/hotel-gallery/3.webp"
