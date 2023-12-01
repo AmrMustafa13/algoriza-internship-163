@@ -21,9 +21,38 @@
             <h2 class="text-[18px] font-[500]">
               {{ room.bed_configurations[0].bed_types[0].name_with_count }}
             </h2>
-            <span>
-              {{ room.bed_configurations[0].bed_types[0].description }}</span
-            >
+            <ul class="text-sm text-[#4f4f4f] flex flex-col gap-2 mt-4">
+              <li class="flex items-center gap-2">
+                <img
+                  src="../../../assets/images/room-card/bag-tick.svg"
+                  alt="bag-tick"
+                />
+                <span>
+                  {{
+                    room.bed_configurations[0].bed_types[0].description
+                  }}</span
+                >
+              </li>
+              <li class="flex items-center gap-2">
+                <img
+                  src="../../../assets/images/room-card/lifeboy.svg"
+                  alt="lifeboy"
+                />
+                <span>
+                  Sleeps
+                  {{ room.bed_configurations[0].bed_types[0].count }}</span
+                >
+              </li>
+              <li class="flex items-center gap-2">
+                <img
+                  src="../../../assets/images/room-card/like.svg"
+                  alt="like"
+                />
+                <span>
+                  {{ room.bed_configurations[0].bed_types[0].name }}
+                </span>
+              </li>
+            </ul>
           </div>
           <button
             class="font-[500] bg-[#2F80ED] text-white rounded-md py-3 mb-4 mx-4"
