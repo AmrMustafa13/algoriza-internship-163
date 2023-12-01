@@ -16,9 +16,13 @@
           <PaymentOptionsForm />
           <PrivacyPolicy @addTrip="handleAddTrip" />
         </div>
-        <div class="flex-1 flex flex-col gap-8">
-          <HotelCard :hotelDetails="tempHotel" />
-          <PriceDetails />
+        <div class="flex-1">
+          <div v-if="Object.keys(tempHotel).length">
+            <div class="flex flex-col gap-8">
+              <HotelCard :hotelDetails="tempHotel" />
+              <PriceDetails />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -41,7 +45,7 @@ import { useHotelsStore } from "../../stores/hotels";
 
 const hotelsStore = useHotelsStore();
 
-const { tempHotel } = storeToRefs(hotelsStore);
+const { tempHotel, bookedHotels } = storeToRefs(hotelsStore);
 
 import { ref } from "vue";
 import { storeToRefs } from "pinia";
@@ -50,6 +54,11 @@ const open = ref(false);
 
 const handleAddTrip = () => {
   open.value = true;
+  // move temp to booked
+  bookedHotels.value.push(tempHotel.value);
+  tempHotel.value = {};
+  // save it to local storage
+  localStorage.setItem("bookedHotels", JSON.stringify(bookedHotels.value));
 };
 
 const handleClose = () => {
