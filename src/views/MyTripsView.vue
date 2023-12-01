@@ -5,7 +5,7 @@
       <div class="flex flex-col gap-7 mx-[205px]">
         <h1 class="text-[#1a1a1a] text-3xl font-semibold">My trips</h1>
         <div v-if="bookedHotels.length > 0">
-          <div class="flex flex-col gap-6 min-h-screen">
+          <div class="flex flex-col gap-6 min-h-screen mb-8">
             <div
               v-for="hotel in bookedHotels"
               :key="hotel.hotel_id"
