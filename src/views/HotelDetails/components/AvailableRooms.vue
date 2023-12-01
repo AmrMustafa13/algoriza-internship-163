@@ -8,18 +8,18 @@
       <div v-if="availableRooms" class="grid grid-cols-2 gap-4">
         <div
           v-for="room in availableRooms"
-          class="bg-white rounded-md flex flex-col w-[400px] overflow-hidden"
+          class="bg-white rounded-md flex flex-col w-full overflow-hidden"
         >
           <div>
             <img
-              :src="room.photos[0].url_original"
+              :src="room.photos[0].url_640x200"
               :alt="room"
-              class="h-[200px] w-full object-cover"
+              class="h-[240px] w-full object-cover"
             />
           </div>
           <div class="p-5">
             <h2 class="text-[18px] font-[500]">
-              {{ room.bed_configurations[0].bed_types[0].name_with_count }}
+              {{ room.bed_configurations[0]?.bed_types[0]?.name_with_count }}
             </h2>
             <ul class="text-sm text-[#4f4f4f] flex flex-col gap-2 mt-4">
               <li class="flex items-center gap-2">
@@ -40,7 +40,7 @@
                 />
                 <span>
                   Sleeps
-                  {{ room.bed_configurations[0].bed_types[0].count }}</span
+                  {{ room.bed_configurations[0]?.bed_types[0]?.count }}</span
                 >
               </li>
               <li class="flex items-center gap-2">
@@ -49,7 +49,7 @@
                   alt="like"
                 />
                 <span>
-                  {{ room.bed_configurations[0].bed_types[0].name }}
+                  {{ room.bed_configurations[0]?.bed_types[0]?.name }}
                 </span>
               </li>
             </ul>

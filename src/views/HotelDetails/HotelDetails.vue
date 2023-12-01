@@ -8,7 +8,7 @@
   <div class="bg-[#f4f4f4] pb-16" v-else>
     <div class="bg-gradient-to-b from-[#F4F4F400] to-[#fff]">
       <div class="container">
-        <HotelGallery />
+        <HotelGallery :hotelImgs="hotelImgs" />
       </div>
     </div>
     <div class="container">
@@ -58,6 +58,7 @@ const hotelDetails = ref({});
 const hotelDescription = ref("");
 const availableRooms = ref([]);
 const isLoading = ref(false);
+const hotelImgs = ref([]);
 
 const getHotelDescription = async () => {
   const options = {
@@ -102,6 +103,7 @@ const getAvailableRooms = async () => {
     const response = await axios.request(options);
     availableRooms.value = response.data.data.rooms;
     console.log(availableRooms.value);
+    isLoading.value = false;
   } catch (error) {
     console.error(error);
   }
@@ -129,9 +131,9 @@ const fetchHotelDetails = async () => {
     const response = await axios.request(options);
     console.log(response.data.data);
     hotelDetails.value = response.data.data;
+    hotelImgs.value = Object.values(response.data.data.rooms)[0].photos;
     getHotelDescription();
     getAvailableRooms();
-    isLoading.value = false;
   } catch (error) {
     console.error(error);
   }
