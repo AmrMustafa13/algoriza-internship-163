@@ -44,8 +44,10 @@
         >
         <span>
           {{
-            new Date(hotelDetails.departure_date).getDate() -
-            new Date(hotelDetails.arrival_date).getDate()
+            (new Date(hotelDetails.departure_date) -
+              new Date(hotelDetails.arrival_date)) /
+            3600000 /
+            24
           }}
           night stay</span
         >
