@@ -12,6 +12,20 @@
               class="rounded-md p-5 flex gap-5 bg-white"
             >
               <div
+                v-if="hotel.rooms[Object.keys(hotel.rooms)[0]]"
+                class="flex-1 w-[285px] h-[200px] overflow-hidden rounded-md"
+              >
+                <img
+                  :src="
+                    hotel.rooms[Object.keys(hotel.rooms)[0]].photos[0]
+                      .url_640x200
+                  "
+                  alt="main"
+                  class="object-cover w-full h-full"
+                />
+              </div>
+              <div
+                v-else
                 class="flex-1 w-[285px] h-[200px] overflow-hidden rounded-md"
               >
                 <img
@@ -20,6 +34,7 @@
                   class="object-cover w-full h-full"
                 />
               </div>
+
               <div class="flex-[2] flex flex-col gap-7">
                 <div>
                   <h3 class="text-[#1a1a1a] font-[500] text-xl">
@@ -58,17 +73,29 @@
                   <div class="flex justify-between items-end">
                     <div class="flex flex-col gap-2">
                       <div class="flex items-center justify-end">
-                        <div>
+                        <div
+                          v-if="
+                            hotel.composite_price_breakdown.strikethrough_amount
+                          "
+                        >
                           <span
                             class="text-sm font-[500] text-[#EB5757] rounded-md line-through"
                           >
-                            $150
+                            ${{
+                              hotel.composite_price_breakdown.strikethrough_amount.value.toFixed(
+                                0
+                              )
+                            }}
                           </span>
                         </div>
                         <span
-                          class="text-lg font-[500] px-2 rounded-md text-[#333]"
+                          class="text-lg font-[500] py-1 px-2 rounded-md text-[#333]"
                         >
-                          $130
+                          ${{
+                            hotel.composite_price_breakdown.gross_amount.value.toFixed(
+                              0
+                            )
+                          }}
                         </span>
                       </div>
                       <div>
@@ -115,6 +142,4 @@ import { storeToRefs } from "pinia";
 const hotelsStore = useHotelsStore();
 
 const { bookedHotels } = storeToRefs(hotelsStore);
-
-console.log(bookedHotels.value);
 </script>

@@ -1,6 +1,16 @@
 <template>
   <div class="flex flex-col rounded-md bg-white overflow-hidden">
-    <div>
+    <div v-if="hotelDetails.rooms[Object.keys(hotelDetails.rooms)[0]]">
+      <img
+        :src="
+          hotelDetails.rooms[Object.keys(hotelDetails.rooms)[0]].photos[0]
+            .url_640x200
+        "
+        alt="main"
+        class="rounded-tl-md rounded-tr-md h-[180px] w-full object-cover"
+      />
+    </div>
+    <div v-else>
       <img
         src="../../../assets/images/hotel-gallery/2.webp"
         alt="main"

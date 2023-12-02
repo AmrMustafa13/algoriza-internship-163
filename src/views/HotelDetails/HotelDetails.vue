@@ -21,7 +21,7 @@
       </div>
       <AvailableRooms
         :availableRooms="availableRooms"
-        :hotelDetails="hotelDetails"
+        @reserve-suite="handleResrveSuite"
       />
     </div>
   </div>
@@ -105,8 +105,6 @@ const getAvailableRooms = async () => {
   try {
     const response = await axios.request(options);
     availableRooms.value = response.data.data.rooms;
-    console.log(availableRooms.value);
-    isLoading.value = false;
   } catch (error) {
     console.error(error);
   }
@@ -132,11 +130,11 @@ const fetchHotelDetails = async () => {
   try {
     isLoading.value = true;
     const response = await axios.request(options);
-    console.log(response.data.data);
     hotelDetails.value = response.data.data;
     hotelImgs.value = Object.values(response.data.data.rooms)[0].photos;
     getHotelDescription();
     getAvailableRooms();
+    isLoading.value = false;
   } catch (error) {
     console.error(error);
   }
@@ -145,4 +143,8 @@ const fetchHotelDetails = async () => {
 onMounted(() => {
   fetchHotelDetails();
 });
+
+const handleResrveSuite = () => {
+  hotelsStore.addTempHotel(hotelDetails.value);
+};
 </script>

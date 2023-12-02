@@ -10,9 +10,9 @@
           v-for="room in availableRooms"
           class="bg-white rounded-md flex flex-col w-full overflow-hidden"
         >
-          <div>
+          <div v-if="room.photos.length > 0">
             <img
-              :src="room.photos[0].url_640x200"
+              :src="room?.photos[0].url_640x200"
               :alt="room"
               class="h-[240px] w-full object-cover"
             />
@@ -78,19 +78,17 @@ const hotelsStore = useHotelsStore();
 
 const router = useRouter();
 
+const emit = defineEmits(["reserve-suite"]);
+
 const props = defineProps({
   availableRooms: {
-    type: Object,
-    required: true,
-  },
-  hotelDetails: {
     type: Object,
     required: true,
   },
 });
 
 const handleResrveSuite = () => {
-  hotelsStore.addTempHotel(hotelDetails);
+  emit("reserve-suite");
   router.push("/checkout");
 };
 </script>

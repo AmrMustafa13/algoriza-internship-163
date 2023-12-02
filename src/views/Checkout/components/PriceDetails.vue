@@ -20,10 +20,24 @@
         class="flex items-center justify-between gap-2 border-t border-[#E0E0E0] pt-4"
       >
         <span>Total</span>
-        <span class="font-semibold text-xl">$ 128.64</span>
+        <span class="font-semibold text-xl"
+          >$
+          {{
+            hotelDetails.composite_price_breakdown.gross_amount.value.toFixed(0)
+          }}
+        </span>
       </div>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { defineProps } from "vue";
+
+const props = defineProps({
+  hotelDetails: {
+    type: Object,
+    required: true,
+  },
+});
+</script>

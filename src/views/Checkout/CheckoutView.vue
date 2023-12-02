@@ -20,7 +20,7 @@
           <div v-if="Object.keys(tempHotel).length">
             <div class="flex flex-col gap-8">
               <HotelCard :hotelDetails="tempHotel" />
-              <PriceDetails />
+              <PriceDetails :hotelDetails="tempHotel" />
             </div>
           </div>
         </div>
