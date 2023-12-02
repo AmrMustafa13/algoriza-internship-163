@@ -13,7 +13,7 @@
             >
               <div
                 v-if="hotel.rooms[Object.keys(hotel.rooms)[0]]"
-                class="flex-1 w-[285px] h-[200px] overflow-hidden rounded-md"
+                class="flex-1 overflow-hidden"
               >
                 <img
                   :src="
@@ -21,7 +21,7 @@
                       .url_640x200
                   "
                   alt="main"
-                  class="object-cover w-full h-full"
+                  class="rounded-md object-cover h-[200px] w-full"
                 />
               </div>
               <div

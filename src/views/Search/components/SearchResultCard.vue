@@ -4,11 +4,11 @@
       <img
         :src="hotel.photoUrls[0].replace('square60', 'square800')"
         :alt="hotel.name"
-        class="rounded-md object-cover w-full h-[260px]"
+        class="rounded-md object-cover w-full h-[200px]"
       />
     </div>
-    <div class="text-sm text-[#4f4f4f] flex flex-col gap-4 flex-[2]">
-      <div class="flex items-center justify-between">
+    <div class="text-sm text-[#4f4f4f] flex flex-col flex-[2]">
+      <div class="flex items-center justify-between mb-2">
         <h2 class="text-[#1a1a1a] text-[500] text-xl">{{ hotel.name }}</h2>
         <div v-if="hotel.priceBreakdown.benefitBadges.length">
           <span
@@ -17,7 +17,7 @@
           >
         </div>
       </div>
-      <div class="flex gap-2 items-center">
+      <div class="flex gap-2 items-center mb-2">
         <div class="flex items-center">
           <img
             v-for="star in renderStarsFromRating(
@@ -54,7 +54,7 @@
       </div>
 
       <div class="flex justify-between items-end">
-        <button @click="handleSearch" class="self-end my-2">
+        <button @click="handleSearch" class="self-end my-4">
           <router-link
             :to="`/hotel/${hotelId}`"
             class="font-[500] bg-[#2F80ED] text-white rounded-md py-3 px-5"
