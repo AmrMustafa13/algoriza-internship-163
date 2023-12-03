@@ -1,6 +1,11 @@
 <template>
   <div class="flex flex-col rounded-md bg-white overflow-hidden">
-    <div v-if="hotelDetails.rooms[Object.keys(hotelDetails.rooms)[0]]">
+    <div
+      v-if="
+        hotelDetails?.rooms[Object.keys(hotelDetails.rooms)[0]]?.photos[0]
+          ?.url_640x200
+      "
+    >
       <img
         :src="
           hotelDetails.rooms[Object.keys(hotelDetails.rooms)[0]].photos[0]

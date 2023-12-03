@@ -12,8 +12,10 @@
       <CovidStatus />
       <div class="flex justify-between gap-8 pb-32">
         <div class="flex-[2] flex flex-col gap-8">
-          <UserDataForm />
-          <PaymentOptionsForm />
+          <UserDataForm :userDataFormInputs="userDataFormInputs" />
+          <PaymentOptionsForm
+            :paymentOptionsFormInputs="paymentOptionsFormInputs"
+          />
           <PrivacyPolicy @addTrip="handleAddTrip" />
         </div>
         <div class="flex-1">
@@ -55,9 +57,42 @@ import { storeToRefs } from "pinia";
 
 const open = ref(false);
 
+const userDataFormInputs = ref({
+  firstName: "",
+  lastName: "",
+  mobileCode: "+62",
+  mobileNumber: "",
+});
+
+const paymentOptionsFormInputs = ref({
+  cardNumber: "",
+  cardName: "",
+  cardSecurityCode: "",
+  cardBillingZipCode: "",
+});
+
 const handleAddTrip = () => {
   if (!Object.keys(tempHotel.value).length) {
     toast.error("Please select a hotel first");
+    return;
+  }
+
+  if (
+    !userDataFormInputs.value.firstName ||
+    !userDataFormInputs.value.lastName ||
+    !userDataFormInputs.value.mobileNumber
+  ) {
+    toast.error("Please fill in your personal information");
+    return;
+  }
+
+  if (
+    !paymentOptionsFormInputs.value.cardNumber ||
+    !paymentOptionsFormInputs.value.cardName ||
+    !paymentOptionsFormInputs.value.cardSecurityCode ||
+    !paymentOptionsFormInputs.value.cardBillingZipCode
+  ) {
+    toast.error("Please fill in your payment information");
     return;
   }
 

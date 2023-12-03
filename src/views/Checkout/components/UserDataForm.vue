@@ -19,6 +19,7 @@
             name="firstname"
             id="firstname"
             class="border-[#4F4F4F]/20 border-2 rounded-md py-2 px-4"
+            v-model="userDataFormInputs.firstName"
           />
         </div>
         <div class="flex flex-col gap-2 w-full">
@@ -28,6 +29,7 @@
             name="lastname"
             id="lastname"
             class="border-[#4F4F4F]/20 border-2 rounded-md py-2 px-4"
+            v-model="userDataFormInputs.lastName"
           />
         </div>
       </div>
@@ -40,7 +42,12 @@
             class="flex items-center border-[#4F4F4F]/20 border-2 rounded-md bg-[#f2f2f2] overflow-hidden px-2"
           >
             <img src="../../../assets/images/flag.png" alt="flag" />
-            <select name="code" id="mobilecode" class="py-2 px-4 outline-none">
+            <select
+              name="code"
+              id="mobilecode"
+              class="py-2 px-4 outline-none"
+              v-model="userDataFormInputs.mobileCode"
+            >
               <option value="+62">+62</option>
               <option value="+63">+63</option>
               <option value="+64">+64</option>
@@ -53,6 +60,7 @@
             name="number"
             id="number"
             class="border-[#4F4F4F]/20 border-2 rounded-md py-2 px-4 w-full"
+            v-model="userDataFormInputs.mobileNumber"
           />
         </div>
       </div>
@@ -64,4 +72,13 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { defineProps } from "vue";
+
+const props = defineProps({
+  userDataFormInputs: {
+    type: Object,
+    required: true,
+  },
+});
+</script>

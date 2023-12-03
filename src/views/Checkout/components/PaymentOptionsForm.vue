@@ -57,6 +57,7 @@
               name="nameoncard"
               id="nameoncard"
               class="border-[#4F4F4F]/20 border-2 rounded-md py-2 px-4 w-full"
+              v-model="paymentOptionsFormInputs.cardName"
             />
             <img
               src="../../../assets/images/checkout/tick-circle.svg"
@@ -74,6 +75,7 @@
               name="cardnumber"
               id="cardnumber"
               class="border-[#4F4F4F]/20 border-2 rounded-md py-2 px-4 w-full"
+              v-model="paymentOptionsFormInputs.cardNumber"
             />
             <img
               src="../../../assets/images/checkout/tick-circle.svg"
@@ -124,6 +126,7 @@
               name="securitycode"
               id="securitycode"
               class="border-[#4F4F4F]/20 border-2 rounded-md py-2 px-4"
+              v-model="paymentOptionsFormInputs.cardSecurityCode"
             />
           </div>
           <div class="flex flex-col gap-2 w-full">
@@ -136,6 +139,7 @@
                 name="billingcode"
                 id="billingcode"
                 class="border-[#4F4F4F]/20 border-2 rounded-md py-2 px-4 w-full"
+                v-model="paymentOptionsFormInputs.cardBillingZipCode"
               />
               <img
                 src="../../../assets/images/checkout/tick-circle.svg"
@@ -149,4 +153,13 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { defineProps } from "vue";
+
+const props = defineProps({
+  paymentOptionsFormInputs: {
+    type: Object,
+    required: true,
+  },
+});
+</script>
