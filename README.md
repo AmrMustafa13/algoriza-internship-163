@@ -1,29 +1,49 @@
-# my-dream-place
+# My-Dream-Place
 
-This template should help get you started developing with Vue 3 in Vite.
+Welcome to the Hotel Booking App built with Vue 3 and the Composition API. This application allows users to search for hotels, view details, and make reservations.
 
-## Recommended IDE Setup
+## Prerequisites
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### Make sure you have the following installed on your machine:
 
-## Customize configuration
+- Node.js
+- (v14.0.0 or later)
+  npm or Yarn
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Installation
 
-## Project Setup
+#### Clone the repository:
+
+```sh
+git clone https://github.com/your-username/hotel-booking-app.git
+```
+
+#### Navigate to the project directory:
+
+```sh
+cd hotel-booking-app
+```
+
+#### Install dependencies:
 
 ```sh
 npm install
+# or
+yarn install
 ```
 
-### Compile and Hot-Reload for Development
+#### Run the app
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Tech Stack
 
-```sh
-npm run build
-```
+- Vue 3
+- Composition API
+- Vue Router
+- Pinia
+- axios
+- Tailwind CSS
+- Vite
