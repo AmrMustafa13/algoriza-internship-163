@@ -42,6 +42,9 @@ import HotelCard from "./components/HotelCard.vue";
 import PriceDetails from "./components/PriceDetails.vue";
 import BookingModal from "../../components/BookingModal.vue";
 import { useHotelsStore } from "../../stores/hotels";
+import { useToast } from "vue-toastification";
+
+const toast = useToast();
 
 const hotelsStore = useHotelsStore();
 
@@ -53,6 +56,11 @@ import { storeToRefs } from "pinia";
 const open = ref(false);
 
 const handleAddTrip = () => {
+  if (!Object.keys(tempHotel.value).length) {
+    toast.error("Please select a hotel first");
+    return;
+  }
+
   open.value = true;
   // move temp to booked
   bookedHotels.value.push(tempHotel.value);
