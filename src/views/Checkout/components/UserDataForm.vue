@@ -36,15 +36,16 @@
           <label for="mobilecode" class="whitespace-nowrap"
             >Mobile Number</label
           >
-          <select
-            name="code"
-            id="mobilecode"
-            class="border-[#4F4F4F]/20 border-2 rounded-md py-2 px-4"
+          <div
+            class="flex items-center border-[#4F4F4F]/20 border-2 rounded-md bg-[#f2f2f2] overflow-hidden px-2"
           >
-            <option value="+62">+62</option>
-            <option value="+63">+63</option>
-            <option value="+64">+64</option>
-          </select>
+            <img src="../../../assets/images/flag.png" alt="flag" />
+            <select name="code" id="mobilecode" class="py-2 px-4 outline-none">
+              <option value="+62">+62</option>
+              <option value="+63">+63</option>
+              <option value="+64">+64</option>
+            </select>
+          </div>
         </div>
         <div class="flex flex-col gap-2 self-end w-full">
           <input
